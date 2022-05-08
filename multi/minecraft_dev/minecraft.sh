@@ -111,7 +111,8 @@ exists () {
         exit 1;
       fi
     fi
-exec java -Xmx${mem}M -Xms512M -DPaper.IgnoreJavaVersion=true -jar server.jar
+#exec java -Xmx${mem}M -Xms512M -DPaper.IgnoreJavaVersion=true -jar server.jar
+exec ./start
 exit 1;
 }
 
