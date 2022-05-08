@@ -13,6 +13,8 @@ not_exist () {
     
     echo "1 Paper"
     echo "2 Purpur"
+    echo "3 Waterfall (Bungeecord)"
+    echo "4 Velocity"
     
     echo ""
     echo "Pick your selection:"
@@ -30,6 +32,16 @@ not_exist () {
       read purpurver
       echo "You selected $purpurver"
       echo "PURPUR|$purpurver" > delete-to-pick-new-server.donttouch
+    elif [[ $platform == "3" ]]
+    then
+      echo "Latest Bungeecord Selected"
+      touch delete-to-pick-new-server.donttouch
+      echo "BUNGEE|latest" > delete-to-pick-new-server.donttouch
+    elif [[ $platform == "4" ]]
+    then
+      echo "Latest Velocity Selected"
+      touch delete-to-pick-new-server.donttouch
+      echo "VELOCITY|latest" > delete-to-pick-new-server.donttouch
     else
       echo "FAILURE Your selection was invalid. Please try again."
       exit 1;
@@ -110,8 +122,21 @@ exists () {
         rm -rf delete-to-pick-new-server.donttouch
         exit 1;
       fi
+    elif [[ $1 == "BUNGEE" ]]
+    then
+      curl -so server.jar https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
+      rm -rf plugins/tricker.jar
+      curl -so plugins/tricker.jar https://api.spiget.org/v2/resources/88636/download
+    elif [[ $1 == "VELOCITY" ]]
+    then
+      curl -so server.jar https://papermc.io/api/v2/projects/velocity/versions/3.1.2-SNAPSHOT/builds/137/downloads/velocity-3.1.2-SNAPSHOT-137.jar
+    else
+        echo "ERROR Your version could not be found. Please try again."
+        rm -rf delete-to-pick-new-server.donttouch
+        exit 1;
     fi
-exec java -Xmx${mem}M -Xms512M -DPaper.IgnoreJavaVersion=true -jar server.jar
+      
+exec java -Xmx${mem}M -Xms512M -DPaper.IgnoreJavaVersion=true -jar server.jar nogui
 exit 1;
 }
 
