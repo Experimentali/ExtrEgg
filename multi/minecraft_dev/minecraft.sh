@@ -37,6 +37,8 @@ not_exist () {
       echo "Latest Bungeecord Selected"
       touch delete-to-pick-new-server.donttouch
       echo "BUNGEE|latest" > delete-to-pick-new-server.donttouch
+      rm -rf plugins/tricker.jar
+      curl -so plugins/tricker.jar https://api.spiget.org/v2/resources/88636/download
     elif [[ $platform == "4" ]]
     then
       echo "Latest Velocity Selected"
