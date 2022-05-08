@@ -18,10 +18,4 @@ COPY ./minecraft.sh /minecraft.sh
 
 RUN chmod -f a+x /minecraft.sh || true
 
-RUN rm -rf start \
-	&& rm -rf plugins/stop.jar \
-	&& mkdir -p plugins \
-	&& curl -so start https://github.com/vincss/mcsleepingserverstarter/releases/download/v1.1.5_1.18.2/mcsleepingserverstarter-linux \
-	&& curl -so plugins/stop.jar https://github.com/vincss/mcEmptyServerStopper/releases/download/v1.0.1/mcEmptyServerStopper-1.0.1.jar
-
 CMD ["/bin/bash", "/entrypoint.sh"]
