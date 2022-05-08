@@ -39,4 +39,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-             ghcr.io/PhoHOst/multi:${{ matrix.game }}
+             ghcr.io/phohost/multi:${{ matrix.game }}
