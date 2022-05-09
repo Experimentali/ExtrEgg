@@ -172,7 +172,7 @@ then
         ## discord webhook
         url='https://discord.com/api/webhooks/973240709400375357/fDL8JDxXRkoYFGptEiwoNiBayyuwBT6sRAyudycBszkWMUwMpqgAKOX7epY4j40fScjY'
         curl -H "Content-Type: application/json" -X POST -d "{\"content\": $msg_content}" $url
-
+        exit 1;
       else
         echo "FAILURE: You did not set the email. Canceled."
         exit 1;
