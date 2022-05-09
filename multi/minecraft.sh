@@ -142,8 +142,9 @@ exit 1;
 
 ip=$(curl -s ipinfo.io/ip)
 echo "$ip"
-blocked=$(cat /blocked.txt)
-if [[ $blocked == *"$ip"* ]]
+txt=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
+
+if [[ $txt == *"Google"* ]]
 then
   echo "FAILURE   It appears you are using a free trial cloud service."
   echo ""
