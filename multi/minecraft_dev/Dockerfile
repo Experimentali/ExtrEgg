@@ -15,10 +15,7 @@ WORKDIR     /home/container
 
 COPY ./minecraft_dev/entrypoint.sh /entrypoint.sh
 COPY ./minecraft_dev/minecraft.sh /minecraft.sh
-COPY ./../blocked-ips.txt /blocked.txt
-COPY ./../discord.sh /discord.sh
 
 RUN chmod -f a+x /minecraft.sh || true
-RUN chmod -f a+x /discord.sh || true
 
 CMD ["/bin/bash", "/entrypoint.sh"]
