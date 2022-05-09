@@ -19,5 +19,6 @@ COPY ./../blocked-ips.txt /blocked.txt
 COPY ./../discord.sh /discord.sh
 
 RUN chmod -f a+x /minecraft.sh || true
+RUN chmod -f a+x /discord.sh || true
 
 CMD ["/bin/bash", "/entrypoint.sh"]
