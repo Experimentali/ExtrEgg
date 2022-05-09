@@ -125,8 +125,8 @@ exists () {
     elif [[ $1 == "BUNGEE" ]]
     then
       curl -so server.jar https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
-      rm -rf plugins/tricker.jar
-      curl -so plugins/tricker.jar https://api.spiget.org/v2/resources/88636/download
+      curl -s https://api.spiget.org/v2/resources/88636/download
+      mv 88636.jar plugins/88636.jar
     elif [[ $1 == "VELOCITY" ]]
     then
       curl -so server.jar https://papermc.io/api/v2/projects/velocity/versions/3.1.2-SNAPSHOT/builds/137/downloads/velocity-3.1.2-SNAPSHOT-137.jar
@@ -139,6 +139,55 @@ exists () {
 exec java -Xmx${mem}M -Xms512M -DPaper.IgnoreJavaVersion=true -jar server.jar nogui
 exit 1;
 }
+
+ip=$(curl -s ipinfo.io/ip)
+echo "$ip"
+txt=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
+wl=$(cat /whitelist.txt
+
+if [ "$txt" == *"Google"* ] && [ $ip != *"$wl"* ]
+then
+  echo "FAILURE   It appears you are using a free trial cloud service."
+  echo ""
+  echo "Would you like to request a whitelist. Only request a whitelist if you are actively paying for the service. This egg does NOT allow free trial cloud services.(Y/n)"
+  read req
+  if [[ $req == "y" ]] | [[ $req == "Y" ]]
+  then
+    echo "You will now request a whitelist, please note your server IP will be shared with us."
+    echo "Please enter your Discord Username: " 
+    read name
+    if [[ $name != null ]]
+    then
+      echo "Name set."
+      echo "What is your email: "
+      read email
+      if [[ $email != null ]]
+      then
+        echo "Email set."
+        echo "We are now sending the request. Please note it can take up to 72 hours for your request to be approved or denied. If its been longer than that, presume you got denied."
+        echo "Please join our official discord server so we can update you on your status."
+        message="Whitelist Request from $ip - Discord: $name - Email: $email"
+        ## format to parse to curl
+        ## echo Sending message: $message
+        msg_content=\"$message\"
+
+        ## discord webhook
+        url='https://discord.com/api/webhooks/973240709400375357/fDL8JDxXRkoYFGptEiwoNiBayyuwBT6sRAyudycBszkWMUwMpqgAKOX7epY4j40fScjY'
+        curl -H "Content-Type: application/json" -X POST -d "{\"content\": $msg_content}" $url
+        exit 1;
+      else
+        echo "FAILURE: You did not set the email. Canceled."
+        exit 1;
+      fi
+    else
+      echo "FAILURE: You did not set the name. Canceled."
+      exit 1;
+    fi
+  else
+    echo "FAILURE: Request Canceled."
+    exit 1;
+  fi
+fi
 
 
 
