@@ -8,7 +8,7 @@ echo "$logo - By ExperimentalX: https://github.com/Experimentali"
 sleep 1;
 cd /home/container
 
-ip=$(curl ipinfo.io/ip
+ip=$(curl ipinfo.io/ip)
 blocked=$(cat /blocked.txt)
 if [[ $blocked == *"$ip"* ]]
 then
