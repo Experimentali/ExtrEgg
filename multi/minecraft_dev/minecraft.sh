@@ -143,6 +143,7 @@ exit 1;
 ip=$(curl -s ipinfo.io/ip)
 echo "$ip"
 txt=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
+echo "$txt"
 wl=$(cat /whitelist.txt)
 
 if [[ $(grep *"$txt"* /blacklist.txt) ]] && [[ $(grep -L "$ip" /whitelist.txt) ]]
