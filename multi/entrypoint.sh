@@ -17,7 +17,7 @@ then
   echo ""
   echo "Would you like to request a whitelist (Y/n)"
   read req
-  if [[ req == "y" ]]
+  if [[ $req == "y" ]] | [[ $req == "Y" ]]
   then
     echo "You will now request a whitelist, please note your server IP will be shared with us."
     echo "Please enter your Discord Username: " 
