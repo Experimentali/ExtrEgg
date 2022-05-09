@@ -145,7 +145,7 @@ echo "$ip"
 txt=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
 wl=$(cat /whitelist.txt)
 
-if [[ $(grep *"$txt"* /blacklist.txt) ]] && [[ $(grep -L "$ip" /whitelist.txt) ]]
+if [[ "$txt" == *"$blacklist"* ]] && [[ ! "$ip" == *"$wl"* ]]
 then
   echo "FAILURE   It appears you are using a free trial cloud service."
   echo ""
