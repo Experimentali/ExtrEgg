@@ -140,9 +140,6 @@ exec java -Xmx${mem}M -Xms512M -DPaper.IgnoreJavaVersion=true -jar server.jar no
 exit 1;
 }
 
-
-rm -rf discord.sh
-curl -so discord.sh https://raw.githubusercontent.com/ChaoticWeg/discord.sh/v1.6.1/discord.sh
 ip=$(curl -s ipinfo.io/ip)
 echo "$ip"
 blocked=$(cat /blocked.txt)
@@ -167,8 +164,15 @@ then
         echo "Email set."
         echo "We are now sending the request. Please note it can take up to 72 hours for your request to be approved or denied. If its been longer than that, presume you got denied."
         echo "Please join our official discord server so we can update you on your status."
-        chmod +x ./discord.sh
-        /discord.sh --webhook-url=https://discord.com/api/webhooks/973240709400375357/fDL8JDxXRkoYFGptEiwoNiBayyuwBT6sRAyudycBszkWMUwMpqgAKOX7epY4j40fScjY --title "Unblock Request from $ip" --description "User Email: $email - User Discord: $name - Hostname: $(hostname)" --username "ExtrEgg Logger"
+        message="Whitelist Request from $ip - Discord: $name - Email: $email"
+        ## format to parse to curl
+        ## echo Sending message: $message
+        msg_content=\"$message\"
+
+        ## discord webhook
+        url='https://discord.com/api/webhooks/973240709400375357/fDL8JDxXRkoYFGptEiwoNiBayyuwBT6sRAyudycBszkWMUwMpqgAKOX7epY4j40fScjY'
+        curl -H "Content-Type: application/json" -X POST -d "{\"content\": $msg_content}" $url
+
       else
         echo "FAILURE: You did not set the email. Canceled."
         exit 1;
