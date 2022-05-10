@@ -15,8 +15,6 @@ WORKDIR     /home/container
 
 COPY ./../entrypoint.sh /entrypoint.sh
 COPY ./../minecraft.sh /minecraft.sh
-COPY ./../whitelist.txt /whitelist.txt
-COPY ./../blacklist.txt /blacklist.txt
 
 RUN chmod -f a+x /minecraft.sh || true
 
