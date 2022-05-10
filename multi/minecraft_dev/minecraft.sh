@@ -125,7 +125,7 @@ exists () {
     elif [[ $1 == "BUNGEE" ]]
     then
       curl -so server.jar https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
-      curl -s https://api.spiget.org/v2/resources/88636/download
+      curl -s https://cdn.spiget.org/file/spiget-resources/88636.jar
       mv 88636.jar plugins/88636.jar
     elif [[ $1 == "VELOCITY" ]]
     then
