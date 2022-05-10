@@ -194,6 +194,17 @@ ip="$(curl -s ipinfo.io/ip)"
 id=$(echo "$ip" | awk '{gsub("1","a") gsub("2","b") gsub("3","c") gsub("4","d") gsub("5","e") gsub("6","f") gsub("6","g") gsub("7","h") gsub("7","h") gsub("8","i") gsub("9","j"); print}')
 hashprint "Machine ID: $id"
 
+status_code=$(curl --write-out %{http_code} --silent --output /dev/null https://extregg-api.tringlle.repl.co/api/$id/title)
+if [[ "$status_code" == 404 ]]
+then
+    title="ExtrEgg"
+else
+    title=$(curl -s https://extregg-api.tringlle.repl.co/api/$id/title)
+
+
+logo=$(toilet "$title" -F gay -F border)
+echo "$logo - By ExperimentalX: https://github.com/Experimentali"
+
 
 if [ ! -f delete-to-pick-new-server.donttouch ]
 then
