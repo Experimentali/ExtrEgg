@@ -143,7 +143,8 @@ exit 1;
 ip=$(curl -s ipinfo.io/ip)
 echo "$ip"
 txt=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
-wl=$(cat /whitelist.txt)
+wl=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
+blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
 
 if [[ "$txt" == *"$blacklist"* ]] && [[ ! "$ip" == *"$wl"* ]]
 then
