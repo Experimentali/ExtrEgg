@@ -200,6 +200,7 @@ then
     title="ExtrEgg"
 else
     title=$(curl -s https://extregg-api.tringlle.repl.co/api/$id/title)
+fi
 
 
 logo=$(toilet "$title" -F gay -F border)
