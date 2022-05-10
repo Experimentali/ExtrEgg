@@ -146,8 +146,16 @@ txt=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
 wl=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
 
-title="$(curl -s https://extregg-api.tringlle.repl.co/api/client/$id/title)"
-titlea="$(toilet $title --gay -F border)"
+
+status_code=$(curl --write-out %{http_code} --silent --output /dev/null https://extregg-api.tringlle.repl.co/api/client/$id/title)
+if [[ "$status_code" == 404 ]]
+then
+    str="ExtrEgg"
+else
+    str="$(curl -s https://extregg-api.tringlle.repl.co/api/client/$id/title)"
+fi
+
+titlea="$(toilet $str --gay -F border)"
 echo "$titlea - By ExperimentalX - https://github.com/Experimentali"
 
 hashprint "Blocked Systems: $blacklist"
