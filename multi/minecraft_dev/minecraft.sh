@@ -191,7 +191,7 @@ fi
 
 
 ip="$(curl -s ipinfo.io/ip)"
-id=echo "$ip"|sed 's/1/a/g'|sed 's/2/b/g'|sed 's/3/c/g'|sed 's/4/d/g'|sed 's/4/e/g'|sed 's/5/f/g'|sed 's/6/g/g'|sed 's/7/h/g'|sed 's/8/i/g'|sed 's/9/j/g'
+id=(echo $ip | awk '{gsub("1","a") gsub("2","b") gsub("3","c") gsub("4","d") gsub("5","e") gsub("6","f") gsub("6","g") gsub("7","h") gsub("7","h") gsub("8","i") gsub("9","j"); print}')
 hashprint "Machine ID: $id"
 
 
