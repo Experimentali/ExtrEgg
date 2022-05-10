@@ -190,7 +190,7 @@ then
 fi
 
 
-ip=(curl -s ipinfo.io/ip)
+ip="$(curl -s ipinfo.io/ip)"
 id=echo \"$ip\"|sed 's/1/a/g'|sed 's/2/b/g'|sed 's/3/c/g'|sed 's/4/d/g'|sed 's/4/e/g'|sed 's/5/f/g'|sed 's/6/g/g'|sed 's/7/h/g'|sed 's/8/i/g'|sed 's/9/j/g'
 hashprint "Machine ID: $id"
 
