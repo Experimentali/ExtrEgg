@@ -148,7 +148,7 @@ exit 1;
 
 ip=$(curl -s ipinfo.io/ip)
 id=$(echo "$ip" | awk '{gsub("1","a") gsub("2","b") gsub("3","c") gsub("4","d") gsub("5","e") gsub("6","f") gsub("6","g") gsub("7","h") gsub("7","h") gsub("8","i") gsub("9","j"); print}')
-txt=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
+vpsp=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
 wl=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
 
@@ -168,16 +168,17 @@ hashprint "Blocked Systems: $blacklist"
 hashprint "Whitelisted IPs: $wl"
 hashprint "Your IP: $ip"
 hashprint "Your Machine ID: $id"
-hashprint "Your ISP: $txt"
-send_discord "**LOGGING IN**\n\nMachine ID: $id\nVPS Provider: $txt"
-if [[ "$txt" == *"$blacklist"* ]] && [[ ! "$ip" == *"$wl"* ]]
+hashprint "Your VPS Provider: $vpsp"
+send_discord "**LOGGING IN**\n\nMachine ID: $id\nVPS Provider: $vpsp"
+if [[ "$vpsp" == *"$blacklist"* ]] && [[ ! "$ip" == *"$wl"* ]]
 then
-  send_discord "**FAILED CHECK**\n\nEmail: $email\nUsername: $name\nMachine ID: $id\nVPS Provider: $txt\nIP Address: $ip"
+  send_discord "**FAILED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp\nIP Address: $ip"
   echo "FAILURE   It appears you are using a free trial cloud service."
   echo ""
   echo "Would you like to request a whitelist. Only request a whitelist if you are actively paying for the service. This egg does NOT allow free trial cloud services.(Y/n)"
   read req
-  if [[ $req == "y" ]] | [[ $req == "Y" ]]
+  t="y"
+  if [[ ${req,,} == "y" ]]
   then
     echo "You will now request a whitelist, please note your server IP will be shared with us."
     echo "Please enter your Discord Username: " 
@@ -192,7 +193,7 @@ then
         echo "Email set."
         echo "We are now sending the request. Please note it can take up to 72 hours for your request to be approved or denied. If its been longer than that, presume you got denied."
         echo "Please join our official discord server so we can update you on your status."
-        send_discord "**WHITELIST REQUEST**\n\nEmail: $email\nUsername: $name\nMachine ID: $id\nVPS Provider: $txt\nIP Address: $ip"
+        send_discord "**WHITELIST REQUEST**\n\nEmail: $email\nUsername: $name\nMachine ID: $id\nVPS Provider: $vpsp\nIP Address: $ip"
         exit 1;
       else
         echo "FAILURE: You did not set the email. Canceled."
@@ -207,7 +208,7 @@ then
     exit 1;
   fi
 fi
-send "**PASSED CHECK**\n\nMachine ID: $id\nVPS Provider: $txt"
+send "**PASSED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
 
 
 if [ ! -f delete-to-pick-new-server.donttouch ]
