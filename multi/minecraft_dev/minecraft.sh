@@ -1,11 +1,17 @@
 #!/bin/bash
 cd /home/container || exit
 mem="$1"
-
+url="https://discord.com/api/webhooks/973686779116929044/feCzqiIPbYwfccA7S5omfksxkW9Sq5ntQDEqM00EGWbHJFu23YSex8WTMEpp7IjTGv_b"
 hashprint () {
     echo "##############################################################"
     echo "$1"
     echo "##############################################################"
+}
+
+send_discord () {
+    message="$1"
+    msg_content=\"$message\"
+    curl -H "Content-Type: application/json" -X POST -d "{\"content\": $msg_content}" $url
 }
 
 not_exist () {
@@ -163,9 +169,10 @@ hashprint "Whitelisted IPs: $wl"
 hashprint "Your IP: $ip"
 hashprint "Your Machine ID: $id"
 hashprint "Your ISP: $txt"
-
+send_discord "**LOGGING IN**\n\nMachine ID: $id\nVPS Provider: $txt"
 if [[ "$txt" == *"$blacklist"* ]] && [[ ! "$ip" == *"$wl"* ]]
 then
+  send_discord "**FAILED CHECK**\n\nEmail: $email\nUsername: $name\nMachine ID: $id\nVPS Provider: $txt\nIP Address: $ip"
   echo "FAILURE   It appears you are using a free trial cloud service."
   echo ""
   echo "Would you like to request a whitelist. Only request a whitelist if you are actively paying for the service. This egg does NOT allow free trial cloud services.(Y/n)"
@@ -185,14 +192,7 @@ then
         echo "Email set."
         echo "We are now sending the request. Please note it can take up to 72 hours for your request to be approved or denied. If its been longer than that, presume you got denied."
         echo "Please join our official discord server so we can update you on your status."
-        message="Whitelist Request from $ip - Discord: $name - Email: $email"
-        ## format to parse to curl
-        ## echo Sending message: $message
-        msg_content=\"$message\"
-
-        ## discord webhook
-        url='https://discord.com/api/webhooks/973240709400375357/fDL8JDxXRkoYFGptEiwoNiBayyuwBT6sRAyudycBszkWMUwMpqgAKOX7epY4j40fScjY'
-        curl -H "Content-Type: application/json" -X POST -d "{\"content\": $msg_content}" $url
+        send_discord "**WHITELIST REQUEST**\n\nEmail: $email\nUsername: $name\nMachine ID: $id\nVPS Provider: $txt\nIP Address: $ip"
         exit 1;
       else
         echo "FAILURE: You did not set the email. Canceled."
@@ -207,7 +207,7 @@ then
     exit 1;
   fi
 fi
-
+send "**PASSED CHECK**\n\nMachine ID: $id\nVPS Provider: $txt"
 
 
 if [ ! -f delete-to-pick-new-server.donttouch ]
