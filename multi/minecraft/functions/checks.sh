@@ -9,8 +9,8 @@ whitelist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
 
 mkdir /home/container/system/configuration/ -p
-touch /home/container/system/configuration/pass
-chmod a+xwr /home/container/system/configuration/pass
+touch /home/container/system/configuration/pass.txt
+chmod a+xwr /home/container/system/configuration/pass.txt
 
 check_blacklist () {
   if [[ "$isp" == *"$blacklist"* ]]
@@ -35,15 +35,15 @@ then
   # If they are blacklisted ^
   if [[ "$whitelist" == "true" ]]
   then
-    echo "YES" > /home/container/system/configuration/pass
+    echo "YES" > /home/container/system/configuration/pass.txt
   # User is whitelisted ^
   elif [[ "$whitelist" == "false" ]]
   then
-    echo "NO" > /home/container/system/configuration/pass
+    echo "NO" > /home/container/system/configuration/pass.txt
   # User is not whitelisted ^
   fi
 elif [[ "$blacklist" == "false" ]]
 then
-  echo "YES" > /home/container/system/configuration/pass
+  echo "YES" > /home/container/system/configuration/pass.txt
 fi
 # User is not blacklisted ^
