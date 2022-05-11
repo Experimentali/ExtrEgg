@@ -168,7 +168,7 @@ echo "$titlea - By ExperimentalX - https://github.com/Experimentali"
 
 #hashprint "Your System IP: $ip"
 hashprint "Your Machine Internal Identifier: $id"
-hashprint "Your VPS Provider: $vpsp"
+hashprint "Your Machine Internal Provider: $vpsp"
 sleep 1;
 send_discord "**STARTING CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
 if [[ "$vpsp" == *"$blacklist"* ]] && [[ ! "$ip" == *"$wl"* ]]
