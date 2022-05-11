@@ -30,7 +30,7 @@ whitelist () {
     return true
   else
     return false
-  fi`
+  fi
 }
 
 send_discord () {
