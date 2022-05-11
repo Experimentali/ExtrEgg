@@ -1,9 +1,14 @@
-FROM openjdk:8-jdk
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:11-slim as java11
+COPY --from=java11 /usr/local/openjdk-11 /usr/local/openjdk-11
 
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:17-slim as java17
+COPY --from=java17 /usr/java/openjdk-17 /usr/java/openjdk-17
+
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:8-slim-buster
 
 LABEL author="ExperimentalX" maintainer="ExperimentalX"
 
-LABEL org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
+LABEL org.opencontainers.image.source="https://github.com/Experimentali/ExtrEgg"
 LABEL org.opencontainers.image.licenses=MIT
 
 RUN         apt update -y \
