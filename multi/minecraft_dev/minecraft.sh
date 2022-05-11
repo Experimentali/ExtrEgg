@@ -154,6 +154,8 @@ blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
 
 
 status_code=$(curl --write-out %{http_code} --silent --output /dev/null https://extregg-api.tringlle.repl.co/api/client/$id/title)
+echo "$status_code"
+sleep 3;
 if [[ "$status_code" == 404 ]]
 then
     str="ExtrEgg"
