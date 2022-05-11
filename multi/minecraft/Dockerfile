@@ -6,7 +6,7 @@ FROM --platform=$TARGETOS/$TARGETARCH openjdk:8-slim-buster
 
 
 COPY --from=java11 /usr/local/openjdk-11 /usr/local/openjdk-11
-COPY --from=java17 /usr/java/openjdk-17 /usr/java/openjdk-17
+COPY --from=java17 /usr/local/openjdk-17 /usr/local/openjdk-17
 
 
 LABEL author="ExperimentalX" maintainer="ExperimentalX"
