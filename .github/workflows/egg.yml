@@ -17,9 +17,7 @@ jobs:
       matrix:
         game:
           - minecraft_dev
-          - minecraft_8
-          - minecraft_11
-          - minecraft_17
+          - minecraft
           
     steps:
       - uses: actions/checkout@v2
