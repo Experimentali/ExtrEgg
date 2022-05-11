@@ -166,10 +166,10 @@ echo "$titlea - By ExperimentalX - https://github.com/Experimentali"
 
 hashprint "Blocked Systems: $blacklist"
 hashprint "Whitelisted IPs: $wl"
-hashprint "Your IP: $ip"
-hashprint "Your Machine ID: $id"
+hashprint "Your System IP: $ip"
+hashprint "Your Machine Internal Identifier: $id"
 hashprint "Your VPS Provider: $vpsp"
-send_discord "**LOGGING IN**\n\nMachine ID: $id\nVPS Provider: $vpsp"
+send_discord "**STARTING CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
 if [[ "$vpsp" == *"$blacklist"* ]] && [[ ! "$ip" == *"$wl"* ]]
 then
   send_discord "**FAILED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp\nIP Address: $ip"
@@ -208,7 +208,7 @@ then
     exit 1;
   fi
 fi
-send "**PASSED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
+send_discord "**PASSED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
 
 
 if [ ! -f delete-to-pick-new-server.donttouch ]
