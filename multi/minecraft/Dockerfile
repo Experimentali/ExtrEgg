@@ -21,7 +21,8 @@ ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
 COPY ./entrypoint.sh /entrypoint.sh
-COPY ./minecraft.sh /minecraft.sh
+COPY ./t.sh /minecraft.sh
+COPY ./functions/checks.sh
 
 RUN chmod -f a+x /minecraft.sh || true
 
