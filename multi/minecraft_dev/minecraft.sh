@@ -49,7 +49,7 @@ not_exist () {
       touch delete-to-pick-new-server.donttouch
       echo "VELOCITY|latest" > delete-to-pick-new-server.donttouch
     else
-      echo "FAILURE Your selection was invalid. Please try again."
+      echo "$(tput setab 1)FAILURE $(tput sgr 0) Your selection was invalid. Please try again."
       exit 1;
     fi
     
@@ -174,7 +174,7 @@ send_discord "**STARTING CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
 if [[ "$vpsp" == *"$blacklist"* ]] && [[ ! "$ip" == *"$wl"* ]]
 then
   send_discord "**FAILED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp\nIP Address: $ip"
-  echo "FAILURE   It appears you are using a free trial cloud service."
+  echo "$(tput setab 1)FAILURE $(tput sgr 0)$(tput setaf 6)It appears you are using a free trial cloud service.$(tput sgr 0)"
   echo ""
   echo "Would you like to request a whitelist. Only request a whitelist if you are actively paying for the service. This egg does NOT allow free trial cloud services.(Y/n)"
   read req
@@ -197,15 +197,15 @@ then
         send_discord "**WHITELIST REQUEST**\n\nEmail: $email\nUsername: $name\nMachine ID: $id\nVPS Provider: $vpsp\nIP Address: $ip"
         exit 1;
       else
-        echo "FAILURE: You did not set the email. Canceled."
+        echo "$(tput setab 1)FAILURE $(tput sgr 0): You did not set the email. Canceled."
         exit 1;
       fi
     else
-      echo "FAILURE: You did not set the name. Canceled."
+      echo "$(tput setab 1)FAILURE $(tput sgr 0): You did not set the name. Canceled."
       exit 1;
     fi
   else
-    echo "FAILURE: Request Canceled."
+    echo "$(tput setab 1)FAILURE $(tput sgr 0): Request Canceled."
     exit 1;
   fi
 fi
