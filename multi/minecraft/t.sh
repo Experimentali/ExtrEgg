@@ -19,6 +19,7 @@ check_whitelist
 # check returned variables, confirm are OK
 
 systemvariables=$(cat /home/container/system/configuration/pass)
+echo "$systemvariables"
 
 # run version picker
 
