@@ -1,11 +1,36 @@
 #!/bin/bash
 cd /home/container || exit
 mem="$1"
+ip=$(curl -s ipinfo.io/ip)
+id=$(echo "$ip" | awk '{gsub("1","ahed") gsub("2","bfda") gsub("3","cjyu") gsub("4","dard") gsub("5","ehts") gsub("6","fhgr") gsub("6","gawt") gsub("7","hlit") gsub("7","hkuyt") gsub("8","iayt") gsub("9","jnrt") gsub("0","uiny"); print}')
+vpsp=$(curl -s "http://ip-api.com/json/$ip" | jq -r '.isp')
+wl=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
+blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
+
+
 url="https://discord.com/api/webhooks/973686779116929044/feCzqiIPbYwfccA7S5omfksxkW9Sq5ntQDEqM00EGWbHJFu23YSex8WTMEpp7IjTGv_b"
 hashprint () {
     echo "##############################################################"
     echo "$1"
     echo "##############################################################"
+}
+
+blacklist () {
+  if [[ "$vpsp" == *"$blacklist"* ]]
+  then
+    return true
+  else
+    return false
+  fi
+}
+
+whitelist () {
+  if [[ "$id" == *"$wl"* ]]
+  then
+    return true
+  else
+    return false
+  fi`
 }
 
 send_discord () {
@@ -146,11 +171,7 @@ exec java -Xmx${mem}M -Xms512M -DPaper.IgnoreJavaVersion=true -jar server.jar no
 exit 1;
 }
 
-ip=$(curl -s ipinfo.io/ip)
-id=$(echo "$ip" | awk '{gsub("1","ahed") gsub("2","bfda") gsub("3","cjyu") gsub("4","dard") gsub("5","ehts") gsub("6","fhgr") gsub("6","gawt") gsub("7","hlit") gsub("7","hkuyt") gsub("8","iayt") gsub("9","jnrt") gsub("0","uiny"); print}')
-vpsp=$(curl -s "http://ip-api.com/json/$ip" | jq -r '.isp')
-wl=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
-blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
+
 
 
 status_code=$(curl --write-out %{http_code} --silent --output /dev/null https://extregg-api.tringlle.repl.co/api/client/$id/title)
@@ -173,44 +194,16 @@ hashprint "Your Machine Internal Identifier: $id"
 hashprint "Your Machine Internal Provider: $vpsp"
 sleep 1;
 send_discord "**STARTING CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
-if [[ "$vpsp" == *"$blacklist"* ]] && [[ "$ip" != *"$wl"* ]]
+
+if [[  blacklist ]]
 then
-  send_discord "**FAILED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp\nIP Address: $ip"
-  echo "$(tput setab 1)FAILURE $(tput sgr 0)$(tput setaf 6)It appears you are using a free trial cloud service.$(tput sgr 0)"
-  echo ""
-  echo "Would you like to request a whitelist. Only request a whitelist if you are actively paying for the service. This egg does NOT allow free trial cloud services.(Y/n)"
-  read req
-  t="y"
-  if [[ ${req,,} == "y" ]]
-  then
-    echo "You will now request a whitelist, please note your server IP will be shared with us."
-    echo "Please enter your Discord Username: " 
-    read name
-    if [[ $name != null ]]
-    then
-      echo "Name set."
-      echo "What is your email: "
-      read email
-      if [[ $email != null ]]
-      then
-        echo "Email set."
-        echo "We are now sending the request. Please note it can take up to 72 hours for your request to be approved or denied. If its been longer than that, presume you got denied."
-        echo "Please join our official discord server so we can update you on your status."
-        send_discord "**WHITELIST REQUEST**\n\nEmail: $email\nUsername: $name\nMachine ID: $id\nVPS Provider: $vpsp\nIP Address: $ip"
-        exit 1;
-      else
-        echo "$(tput setab 1)FAILURE $(tput sgr 0): You did not set the email. Canceled."
-        exit 1;
-      fi
-    else
-      echo "$(tput setab 1)FAILURE $(tput sgr 0): You did not set the name. Canceled."
-      exit 1;
+    if [[ ! whitelist ]]
+        echo "FAILURE Your VPS Prover is on the blacklist."
     fi
-  else
-    echo "$(tput setab 1)FAILURE $(tput sgr 0): Request Canceled."
-    exit 1;
-  fi
 fi
+        
+        
+        
 send_discord "**PASSED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
 
 
