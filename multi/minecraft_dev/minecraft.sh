@@ -173,7 +173,7 @@ hashprint "Your Machine Internal Identifier: $id"
 hashprint "Your Machine Internal Provider: $vpsp"
 sleep 1;
 send_discord "**STARTING CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
-if [[ "$vpsp" == *"$blacklist"* ]] #&& [[ ! "$ip" == *"$wl"* ]]
+if [[ "$vpsp" == *"$blacklist"* ]] && [[ "$ip" != *"$wl"* ]]
 then
   send_discord "**FAILED CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp\nIP Address: $ip"
   echo "$(tput setab 1)FAILURE $(tput sgr 0)$(tput setaf 6)It appears you are using a free trial cloud service.$(tput sgr 0)"
