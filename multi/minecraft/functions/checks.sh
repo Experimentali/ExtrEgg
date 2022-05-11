@@ -35,15 +35,15 @@ then
   # If they are blacklisted ^
   if [[ "$whitelist" == "true" ]]
   then
-    echo "YES" > /home/container/system/configuration/pass.txt
+    echo "YES" | tee /home/container/system/configuration/pass.txt
   # User is whitelisted ^
   elif [[ "$whitelist" == "false" ]]
   then
-    echo "NO" > /home/container/system/configuration/pass.txt
+    echo "NO" | tee /home/container/system/configuration/pass.txt
   # User is not whitelisted ^
   fi
 elif [[ "$blacklist" == "false" ]]
 then
-  echo "YES" > /home/container/system/configuration/pass.txt
+  echo "YES" | tee /home/container/system/configuration/pass.txt
 fi
 # User is not blacklisted ^
