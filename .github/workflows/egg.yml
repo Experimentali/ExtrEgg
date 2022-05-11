@@ -16,7 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         game:
-          - minecraft_dev
           - minecraft
           
     steps:
