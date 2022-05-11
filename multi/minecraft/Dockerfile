@@ -1,10 +1,10 @@
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:11-slim AS java11
+FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/serversify/yolks:java_11 AS java11
 COPY --from=java11 /usr/local/openjdk-11 /usr/local/openjdk-11
 
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:17-slim AS java17
+FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/serversify/yolks:java_17 AS java17
 COPY --from=java17 /usr/java/openjdk-17 /usr/java/openjdk-17
 
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:8-slim-buster
+FROM --platform=$TARGETOS/$TARGETARCH hcr.io/serversify/yolks:java_8
 
 LABEL author="ExperimentalX" maintainer="ExperimentalX"
 
