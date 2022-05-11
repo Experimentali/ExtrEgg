@@ -198,6 +198,7 @@ send_discord "**STARTING CHECK**\n\nMachine ID: $id\nVPS Provider: $vpsp"
 if [[  blacklist ]]
 then
     if [[ ! whitelist ]]
+    then
         echo "FAILURE Your VPS Prover is on the blacklist."
     fi
 fi
