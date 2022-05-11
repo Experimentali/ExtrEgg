@@ -10,7 +10,7 @@ hashprint () {
 
 send_discord () {
     message="$1"
-    msg_content=\"$message\"
+    msg_content=\"$message\n** **\"
     curl -H "Content-Type: application/json" -X POST -d "{\"content\": $msg_content}" $url
 }
 
