@@ -1,10 +1,13 @@
 FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/serversify/yolks:java_11 AS java11
-COPY --from=java11 /usr/local/openjdk-11 /usr/local/openjdk-11
 
 FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/serversify/yolks:java_17 AS java17
-COPY --from=java17 /usr/java/openjdk-17 /usr/java/openjdk-17
 
 FROM --platform=$TARGETOS/$TARGETARCH hcr.io/serversify/yolks:java_8
+
+
+COPY --from=java11 /usr/local/openjdk-11 /usr/local/openjdk-11
+COPY --from=java17 /usr/java/openjdk-17 /usr/java/openjdk-17
+
 
 LABEL author="ExperimentalX" maintainer="ExperimentalX"
 
