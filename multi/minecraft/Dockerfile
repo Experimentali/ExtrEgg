@@ -1,9 +1,3 @@
-FROM openjdk:11-jdk as java11
-COPY --from=java11 /usr/local/openjdk-11 /usr/local/openjdk-11
-
-FROM openjdk:17-jdk as java17
-COPY --from=java17 /usr/java/openjdk-17 /usr/java/openjdk-17
-
 FROM openjdk:8-jdk
 
 
