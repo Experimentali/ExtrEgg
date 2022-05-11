@@ -8,10 +8,11 @@ ip="$(curl -s ipinfo.io/ip)"
 whitelist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
 
+mkdir /home/container/system/configuration/ -p
 touch /home/container/system/configuration/pass
 chmod a+xwr /home/container/system/configuration/pass
 
-check_blacklist {
+check_blacklist () {
   if [[ "$isp" == *"$blacklist"* ]]
   then
     blacklist=true
@@ -20,7 +21,7 @@ check_blacklist {
   fi
 }
 
-check_whitelist {
+check_whitelist () {
   if [[ "$ip" == *"$whitelist"* ]]
   then
     whitelist=true
