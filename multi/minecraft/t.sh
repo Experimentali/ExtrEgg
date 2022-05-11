@@ -10,15 +10,15 @@ source /functions/checks.sh
 
 # check for blacklisted hosts
 
-check_blacklist "$isp"
+check_blacklist
 
 # check for whitelisted hosts
 
-check_whitelist "$isp"
+check_whitelist
 
 # check returned variables, confirm are OK
 
-systemvariables=$(cat /home/container/system/configurations/pass)
+systemvariables=$(cat /home/container/system/configuration/pass)
 
 # run version picker
 

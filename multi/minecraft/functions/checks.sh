@@ -2,13 +2,14 @@
 
 # Author Tringlle
 
-isp="$1"
+isp=$(curl -s "http://ip-api.com/json/$ip" | jq -r '.isp')
 ip="$(curl -s ipinfo.io/ip)"
 
 whitelist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
 
-touch /home/container/system/configurations/pass
+touch /home/container/system/configuration/pass
+chmod a+xwr /home/container/system/configuration/pass
 
 check_blacklist {
   if [[ "$isp" == *"$blacklist"* ]]
@@ -33,11 +34,11 @@ then
   # If they are blacklisted ^
   if [[ "$whitelist" == "true" ]]
   then
-    echo "YES" > /home/container/system/configurations/pass
+    echo "YES" > /home/container/system/configuration/pass
   # User is whitelisted ^
   elif [[ "$whitelist" == "false" ]]
   then
-    echo "NO" > /home/container/system/configurations/pass
+    echo "NO" > /home/container/system/configuration/pass
   # User is not whitelisted ^
   fi
 elif [[ "$blacklist" == "false" ]]
