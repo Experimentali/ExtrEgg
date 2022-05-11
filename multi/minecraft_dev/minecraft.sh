@@ -147,7 +147,7 @@ exit 1;
 }
 
 ip=$(curl -s ipinfo.io/ip)
-id=$(echo "$ip" | awk '{gsub("1","ahed") gsub("2","bfda") gsub("3","cjyu") gsub("4","dard") gsub("5","ehts") gsub("6","fhgr") gsub("6","gawt") gsub("7","hlit") gsub("7","hkuyt") gsub("8","iayt") gsub("9","jnrt") gsub("0","uiny") gsub(".",">><<"); print}')
+id=$(echo "$ip" | awk '{gsub("1","ahed") gsub("2","bfda") gsub("3","cjyu") gsub("4","dard") gsub("5","ehts") gsub("6","fhgr") gsub("6","gawt") gsub("7","hlit") gsub("7","hkuyt") gsub("8","iayt") gsub("9","jnrt") gsub("0","uiny"); print}')
 vpsp=$(curl "http://ip-api.com/json/$ip" | jq -r '.isp')
 wl=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
