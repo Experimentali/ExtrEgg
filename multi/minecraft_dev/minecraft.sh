@@ -166,7 +166,8 @@ fi
 titlea="$(toilet $str --gay -F border)"
 echo "$titlea - By ExperimentalX - https://github.com/Experimentali"
 
-#hashprint "Your System IP: $ip"
+hashprint "Blocked Machine Internal Providers: $blacklist"
+hashprint "Your System IP: $ip"
 hashprint "Your Machine Internal Identifier: $id"
 hashprint "Your Machine Internal Provider: $vpsp"
 sleep 1;
