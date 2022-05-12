@@ -27,7 +27,6 @@ echo_to_file
 # check returned variables, confirm are OK
 
 systemvariables=$(cat /home/container/system/configuration/pass.txt)
-echo "$systemvariables"
 
 # run version picker
 
