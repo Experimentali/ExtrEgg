@@ -36,9 +36,13 @@ source /functions/confirm.sh
 
 echo_sf
 
+# Source version picker
+
+source /functions/version.sh
+
 # run version picker
 
-
+group
 
 # run installer
 
