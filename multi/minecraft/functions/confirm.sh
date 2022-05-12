@@ -7,5 +7,7 @@ echo_sf () {
   elif [[ "$pof" == "NO" ]]
   then
     echo "$(tput setaf 2)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 2)You have failed the ISP check."
+  else
+    echo "$(tput setaf 2)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 2)An error has occured. Please report this to the Developers of ExtrEgg."
   fi
 }
