@@ -23,7 +23,6 @@ check_blacklist () {
   if [[ "$blacklist" == *"$isp"* ]]
   then
     blacklist=true
-    send_discord "**LOGGED BLACKLIST**\n\nIP: $ip\nISP: $isp\nInternal ID: $intmacid\nIP is Blocked"
   else
     blacklist=false
   fi
@@ -33,7 +32,6 @@ check_whitelist () {
   if [[ "$whitelist" == *"$ip"* ]]
   then
     whitelist=true
-    send_discord "**LOGGED WHITELIST**\n\nIP: $ip\nISP: $isp\nInternal ID: $intmacid\nIP is Whitelisted"
   else
     whitelist=false
   fi
@@ -46,15 +44,18 @@ echo_to_file () {
     if [[ "$whitelist" == "true" ]]
     then
       echo "YES" > /home/container/system/configuration/pass.txt
+      send_discord "**LOGGED WHITELIST**\n\nUser has been allowed through the blacklist due to them being on the whitelist.\n\nIP: $ip\nISP: $isp\nInternal ID: $intmacid" "https://discord.com/api/webhooks/974322296619663450/hZfNleHsjEB-NL1UPxo9AmaV-v8mQJYs8aavrAWUct7XU9df8bGTVTWdz6GO16vsy-iY"
       # User is whitelisted ^
     elif [[ "$whitelist" == "false" ]]
     then
       echo "NO" > /home/container/system/configuration/pass.txt
+      send_discord "**LOGGED BLACKLIST**\n\nUser is blacklisted and not on the whitelist.\n\nIP: $ip\nISP: $isp\nInternal ID: $intmacid" "https://discord.com/api/webhooks/973686779116929044/feCzqiIPbYwfccA7S5omfksxkW9Sq5ntQDEqM00EGWbHJFu23YSex8WTMEpp7IjTGv_b"
       # User is not whitelisted ^
     fi
   elif [[ "$blacklist" == "false" ]]
   then
     echo "YES" > /home/container/system/configuration/pass.txt
+    send_discord "**LOGGED ALLOW**\n\nUser is not on blacklist or whitelist.\n\nIP: $ip\nISP: $isp\nInternal ID: $intmacid" "https://discord.com/api/webhooks/974322931238834216/iF3mEx_M-2oBMACtk2csjEufX8A5WPqQjFsJz--nyQyOcaxD_LRB5O11bXTgM-hbKRis"
   fi
   # User is not blacklisted ^
 }
