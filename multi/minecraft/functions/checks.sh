@@ -30,20 +30,22 @@ check_whitelist () {
   fi
 }
 
-if [[ "$blacklist" == "true" ]]
-then
-  # If they are blacklisted ^
-  if [[ "$whitelist" == "true" ]]
+echo_to_file () {
+  if [[ "$blacklist" == "true" ]]
+  then
+    # If they are blacklisted ^
+    if [[ "$whitelist" == "true" ]]
+    then
+      echo "YES" | tee /home/container/system/configuration/pass.txt
+      # User is whitelisted ^
+    elif [[ "$whitelist" == "false" ]]
+    then
+      echo "NO" | tee /home/container/system/configuration/pass.txt
+      # User is not whitelisted ^
+    fi
+  elif [[ "$blacklist" == "false" ]]
   then
     echo "YES" | tee /home/container/system/configuration/pass.txt
-  # User is whitelisted ^
-  elif [[ "$whitelist" == "false" ]]
-  then
-    echo "NO" | tee /home/container/system/configuration/pass.txt
-  # User is not whitelisted ^
   fi
-elif [[ "$blacklist" == "false" ]]
-then
-  echo "YES" | tee /home/container/system/configuration/pass.txt
-fi
-# User is not blacklisted ^
+  # User is not blacklisted ^
+}
