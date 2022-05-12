@@ -34,7 +34,7 @@ source /functions/confirm.sh
 
 # Print failure or success
 
-print_sf
+echo_sf
 
 # run version picker
 
