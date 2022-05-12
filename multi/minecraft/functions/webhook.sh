@@ -1,4 +1,4 @@
-send_discord {
+send_discord () {
   message="$1\n** **"
   msg_content=\"$message\"
 
