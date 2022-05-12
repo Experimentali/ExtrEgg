@@ -2,8 +2,8 @@
 
 # Author Tringlle
 
-isp=$(curl -s "http://ip-api.com/json/$ip" | jq -r '.isp')
 ip="$(curl -s ipinfo.io/ip)"
+isp=$(curl -s "http://ip-api.com/json/$ip" | jq -r '.isp')
 
 whitelist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
