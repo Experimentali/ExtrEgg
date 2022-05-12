@@ -43,6 +43,7 @@ source /functions/version.sh
 # run version picker
 
 if [[ ! -f /home/container/system/configurations/version.txt ]]
+then
   group
 fi
 
