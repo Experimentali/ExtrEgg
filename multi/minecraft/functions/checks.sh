@@ -17,7 +17,7 @@ create_files () {
 }
 
 check_blacklist () {
-  if [[ "$isp" == *"Google"* ]]
+  if [[ "$isp" == *"Google LLC"* ]]
   then
     blacklist=true
   else
