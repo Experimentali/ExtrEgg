@@ -17,15 +17,18 @@ software () {
     echo "3: Paper"
     echo "4: Purpur"
     read software
+    version
   elif [[ "$group" == "2" ]]
   then
     echo "5: Vanilla"
     read software
+    version
   elif [[ "$group" == "3" ]]
   then
     echo "6: Bungeecord (Java)"
     echo "7: Velocity (Java)"
     read group
+    version
   else
     echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
   fi
@@ -48,6 +51,7 @@ version () {
     echo "11: Version 1.9.4"
     echo "12: Version 1.8.9"
     read version
+    finish_up
 
   elif [[ "$software" == 2 ]]
   then
@@ -63,6 +67,7 @@ version () {
     echo "22: Version 1.9.4"
     echo "23: Version 1.8.9"
     read version
+    finish_up
 
   elif [[ "$software" == 3 ]]
   then
@@ -78,6 +83,7 @@ version () {
     echo "33: Version 1.9.4"
     echo "34: Version 1.8.9"
     read version
+    finish_up
 
   elif [[ "$software" == 4 ]]
   then
@@ -87,21 +93,25 @@ version () {
     echo "38: Version 1.15.2"
     echo "39: Version 1.14.4"
     read version
+    finish_up
 
   elif [[ "$software" == 5 ]]
   then
     echo "40: Version Latest"
     read version
+    finish_up
     
   elif [[ "$software" == 6 ]]
   then
     echo "41: Version Latest"
     read version
+    finish_up
 
   elif [[ "$software" == 7 ]]
   then
     echo "42: Version Latest"
     read version 
+    finish_up
 
   fi
 }
