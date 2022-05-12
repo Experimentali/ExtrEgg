@@ -42,7 +42,9 @@ source /functions/version.sh
 
 # run version picker
 
-group
+if [[ ! -f /home/container/system/configurations/version.txt ]]
+  group
+fi
 
 # run installer
 
