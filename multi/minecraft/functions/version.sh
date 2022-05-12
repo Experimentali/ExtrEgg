@@ -8,7 +8,7 @@ group () {
   read group
   case $group in
     1|2|3)
-      echo "Got it."
+      software;;
     *)
       echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version was not in the specified list. Please use the number corresponding to your version."
   esac
@@ -39,8 +39,6 @@ software () {
       version;;
     *)
       echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your sofware group was not found. Please use the number corresponding to your software group.";;
-      sleep 2;;
-      exit 1;;
   esac
 }
 
@@ -161,4 +159,4 @@ finish_up () {
 if [[ ! -f server.jar ]]
 then
   group
-  
+fi
