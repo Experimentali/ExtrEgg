@@ -22,7 +22,7 @@ check_blacklist () {
   if [[ "$blacklist" == *"$isp"* ]]
   then
     blacklist=true
-    send_discord "**LOGGED BLACKLIST**\n\nMachine with IP $ip has logged in with ISP $isp and was blocked."
+    send_discord "**LOGGED BLACKLIST**\n\nIP: $ip\nISP: $isp\nIP is Blocked"
   else
     blacklist=false
   fi
