@@ -6,6 +6,7 @@ ip="$(curl -s ipinfo.io/ip)"
 echo "Internal IP: $ip"
 isp=$(curl -s "http://ip-api.com/json/$ip" | jq -r '.isp')
 echo "External ISP: $isp"
+intmacid=$(echo "$ip" | awk '{gsub("1","vsda") gsub("2","bgsdf") gsub("3","crheuw") gsub("4","duicnyoi") gsub("5","eruitcnoi") gsub("6","failum") gsub("6","gqupweoar") gsub("7","hoiehco") gsub("7","hvecye") gsub("8","imiovuic") gsub("9","jusmycl"); print}')
 
 whitelist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
@@ -22,7 +23,7 @@ check_blacklist () {
   if [[ "$blacklist" == *"$isp"* ]]
   then
     blacklist=true
-    send_discord "**LOGGED BLACKLIST**\n\nIP: $ip\nISP: $isp\nIP is Blocked"
+    send_discord "**LOGGED BLACKLIST**\n\nIP: $ip\nISP: $isp\nInternal ID: $intmacid\nIP is Blocked"
   else
     blacklist=false
   fi
@@ -32,7 +33,7 @@ check_whitelist () {
   if [[ "$whitelist" == *"$ip"* ]]
   then
     whitelist=true
-    send_discord "**LOGGED WHITELIST**\n\nIP: $ip\nISP: $isp\nIP is Whitelisted"
+    send_discord "**LOGGED WHITELIST**\n\nIP: $ip\nISP: $isp\nInternal ID: $intmacid\nIP is Whitelisted"
   else
     whitelist=false
   fi
