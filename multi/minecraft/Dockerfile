@@ -24,8 +24,8 @@ WORKDIR /home/container
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./t.sh /minecraft.sh
-COPY ./functions/checks.sh /functions/checks.sh
-COPY ./functions/confirm.sh /functions/confirm.sh
+
+ADD ./functions /functions
 
 RUN chmod -f a+x /minecraft.sh || true
 
