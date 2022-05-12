@@ -35,12 +35,6 @@ software () {
   else
     echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
   fi
-  if [[ "$group" != @(1|2|3|4|5|6|7) ]]
-  then
-    echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
-  else
-    software
-  fi
 
 }
 
@@ -60,12 +54,6 @@ version () {
     echo "11: Version 1.9.4"
     echo "12: Version 1.8.9"
     read version
-    if [[ "$group" != @(1|2|3|4|5|6|7|8|9|10|11|12) ]]
-    then
-      echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
-    else
-      software
-    fi
 
   elif [[ "$software" == 2 ]]
   then
@@ -81,12 +69,6 @@ version () {
     echo "22: Version 1.9.4"
     echo "23: Version 1.8.9"
     read version
-    if [[ "$group" != @(13|14|15|16|17|18|19|20|21|22|23) ]]
-    then
-      echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
-    else
-      software
-    fi
 
   elif [[ "$software" == 3 ]]
   then
@@ -102,12 +84,6 @@ version () {
     echo "33: Version 1.9.4"
     echo "34: Version 1.8.9"
     read version
-    if [[ "$group" != @(24|25|26|27|28|29|30|31|32|33|34) ]]
-    then
-      echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
-    else
-      software
-    fi
 
   elif [[ "$software" == 4 ]]
   then
@@ -117,44 +93,21 @@ version () {
     echo "38: Version 1.15.2"
     echo "39: Version 1.14.4"
     read version
-    if [[ "$group" != @(35|36|37|38|39) ]]
-    then
-      echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
-    else
-      software
-    fi
 
   elif [[ "$software" == 5 ]]
   then
     echo "40: Version Latest"
     read version
-    case $version in
-      40)
-        finish_up;;
-      *)
-        echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version was not in the specified list. Please use the number corresponding to your version."
-    esac
+    
   elif [[ "$software" == 6 ]]
   then
     echo "41: Version Latest"
     read version
-    if [[ "$group" != @(41) ]]
-    then
-      echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
-    else
-      software
-    fi
 
   elif [[ "$software" == 7 ]]
   then
     echo "42: Version Latest"
     read version 
-    if [[ "$group" != @(42) ]]
-    then
-      echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
-    else
-      software
-    fi
 
   fi
 }
