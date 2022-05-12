@@ -6,6 +6,7 @@ group () {
   echo "2: Minecraft Bedrock"
   echo "3: Minecraft Proxy"
   read group
+  software
 }
 
 software () {
