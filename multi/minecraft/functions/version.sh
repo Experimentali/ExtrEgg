@@ -10,18 +10,18 @@ group () {
 }
 
 software () {
-  if [[ group == "1" ]]
+  if [[ "$group" == "1" ]]
   then
     echo "1: Vanilla"
     echo "2: Spigot"
     echo "3: Paper"
     echo "4: Purpur"
     read software
-  elif [[ group == "2" ]]
+  elif [[ "$group" == "2" ]]
   then
     echo "5: Vanilla"
     read software
-  elif [[ group == "3" ]]
+  elif [[ "$group" == "3" ]]
   then
     echo "6: Bungeecord (Java)"
     echo "7: Velocity (Java)"
