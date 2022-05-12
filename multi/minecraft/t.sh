@@ -28,6 +28,14 @@ echo_to_file
 
 systemvariables=$(cat /home/container/system/configuration/pass.txt)
 
+# Define new source for new functions
+
+source /functions/confirm.sh
+
+# Print failure or success
+
+print_sf
+
 # run version picker
 
 
