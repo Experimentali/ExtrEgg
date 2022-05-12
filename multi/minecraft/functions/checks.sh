@@ -3,7 +3,9 @@
 # Author Tringlle
 
 ip="$(curl -s ipinfo.io/ip)"
+echo "Internal IP: $ip"
 isp=$(curl -s "http://ip-api.com/json/$ip" | jq -r '.isp')
+echo "External ISP: $isp"
 
 whitelist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/whitelist)
 blacklist=$(curl -s https://extregg-api.tringlle.repl.co/api/system/blacklist)
