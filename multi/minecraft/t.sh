@@ -8,6 +8,10 @@ isp=$(curl -s "http://ip-api.com/json/$ip" | jq -r '.isp')
 
 source /functions/checks.sh
 
+# Create system configuration files
+
+create_files
+
 # check for blacklisted hosts
 
 check_blacklist
@@ -15,6 +19,10 @@ check_blacklist
 # check for whitelisted hosts
 
 check_whitelist
+
+# Echo variables to file
+
+echo_to_file
 
 # check returned variables, confirm are OK
 
