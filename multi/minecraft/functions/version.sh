@@ -6,13 +6,6 @@ group () {
   echo "2: Minecraft Bedrock"
   echo "3: Minecraft Proxy"
   read group
-  if [[ "$group" != @(1|2|3) ]]
-  then
-    echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
-  else
-    software
-  fi
-
 }
 
 software () {
