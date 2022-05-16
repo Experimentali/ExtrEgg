@@ -18,9 +18,7 @@ then
 elif [[ "$version" == "4.3.2" ]]
 then
   download_pocketmine
-fi
-
-if [[ "$software" == "1" ]]
+elif [[ "$software" == "1" ]]
 then
   download_vanilla $version
 elif [[ "$software" == "2" ]]
