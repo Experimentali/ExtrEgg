@@ -2,9 +2,11 @@
 
 data=$(cat /home/container/system/configuration/version.txt)
 
-arrIN=(${data//;/ })
-software=${arrIN[0]}
-version=${arrIN[1]}
+IFS="|"
+read -a strarr <<< "$data"
+
+software="${strarr[0]}"
+version="${strarr[1]}"
 
 echo "$software - $version"
 
