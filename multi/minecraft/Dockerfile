@@ -18,6 +18,10 @@ RUN         apt update -y \
 						&& apt install -y curl ca-certificates openssl git tar sqlite3 fontconfig tzdata iproute2 libfreetype6 toilet jq \
 						&& useradd -d /home/container -m container
 
+USER root
+
+RUN /bin/bash -c 'ls -la; chmod +x /functions/*.sh; ls -la'
+
 USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container
@@ -28,6 +32,5 @@ COPY ./t.sh /minecraft.sh
 ADD ./functions /functions
 
 RUN chmod -f a+x /minecraft.sh || true
-RUN /bin/bash -c 'ls -la; chmod +x /functions/*.sh; ls -la'
 
 CMD ["/bin/bash", "/entrypoint.sh"]
