@@ -18,3 +18,11 @@ download_purpur () {
   curl -so /home/container/server.jar "https://serverjars.com/api/fetchJar/purpur/$1"
 
 }
+
+download_waterfall () {
+  curl -so /home/container/server.jar "https://serverjars.com/api/fetchJar/waterfall/1.18"
+}
+
+download_velocity () {
+  curl -so /home/container/server.jar "https://serverjars.com/api/fetchJar/velocity/3.1.2"
+}
