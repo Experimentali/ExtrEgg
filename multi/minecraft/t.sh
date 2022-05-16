@@ -49,6 +49,8 @@ fi
 
 # run installer
 
-
+/functions/update_jar.sh
 
 # start server
+
+exec java -Xmx1G -Xms512M -jar /home/container/server.jar 
