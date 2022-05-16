@@ -121,8 +121,3 @@ finish_up () {
   touch /home/container/system/configuration/version.txt
   echo "$software|$version" > /home/container/system/configuration/version.txt
 }
-
-if [[ ! -f server.jar ]]
-then
-  group
-fi
