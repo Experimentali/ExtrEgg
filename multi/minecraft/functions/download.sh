@@ -26,3 +26,11 @@ download_waterfall () {
 download_velocity () {
   curl -so /home/container/server.jar "https://serverjars.com/api/fetchJar/velocity/3.1.2"
 }
+
+download_nukkitx () {
+  curl -so /home/container/server.jar "https://serverjars.com/api/fetchJar/nukkitx/1.16"
+}
+
+download_pocketmine () {
+  curl -so /home/container/server.jar "https://serverjars.com/api/fetchJar/pocketmine/4.3.2"
+} 
