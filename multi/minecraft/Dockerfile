@@ -28,7 +28,6 @@ COPY ./t.sh /minecraft.sh
 ADD ./functions /functions
 
 RUN chmod -f a+x /minecraft.sh || true
-
-CMD ["/bin/bash", "chmod a+x /functions -R"]
+RUN /bin/bash -c 'ls -la; chmod +x gitlab-properties-builder.sh; ls -la'
 
 CMD ["/bin/bash", "/entrypoint.sh"]
