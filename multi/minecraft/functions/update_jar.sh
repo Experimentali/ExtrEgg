@@ -3,8 +3,8 @@
 data=$(cat /home/container/system/configuration/version.txt)
 
 arrIN=(${data//;/ })
-software=$(${arrIN[0]})
-version=$(${arrIN[1]})
+software=${arrIN[0]}
+version=${arrIN[1]}
 
 
 source /functions/download.sh
