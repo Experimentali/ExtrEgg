@@ -28,5 +28,6 @@ COPY ./t.sh /minecraft.sh
 ADD ./functions /functions
 
 RUN chmod -f a+x /minecraft.sh || true
+RUN chmod -f -R a+x /functions || true
 
 CMD ["/bin/bash", "/entrypoint.sh"]
