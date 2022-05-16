@@ -6,6 +6,7 @@ arrIN=(${data//;/ })
 software=${arrIN[0]}
 version=${arrIN[1]}
 
+echo "$software - $version"
 
 source /functions/download.sh
 
