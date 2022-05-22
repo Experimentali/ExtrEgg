@@ -22,7 +22,7 @@ download_purpur () {
 download_waterfall () {
   curl -so /home/container/server.jar "https://serverjars.com/api/fetchJar/waterfall/1.18"
   mkdir -p /home/container/plugins
-  curl -so /home/container/plugins/88636.jar "https://api.spiget.org/v2/resources/88636/download"
+  cp /88636.jar /home/container/plugins/88636.jar
 }
 
 download_velocity () {
