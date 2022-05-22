@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:-slim-buster
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:11-slim-buster
 
 
 
