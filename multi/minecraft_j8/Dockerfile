@@ -14,8 +14,8 @@ RUN         apt update -y \
 USER root
 
 ADD ./../functions /functions
-
 COPY ./../t.sh /minecraft.sh
+COPY ./../88636.jar /88636.jar
 
 RUN /bin/bash -c 'chmod +x /functions/*.sh'
 RUN /bin/bash -c 'chmod +x /minecraft.sh'
