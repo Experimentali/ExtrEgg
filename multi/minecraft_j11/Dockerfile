@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH openjdk:11-slim-buster
+FROM --platform=$TARGETOS/$TARGETARCH openjdk:-slim-buster
 
 
 
@@ -13,7 +13,7 @@ RUN         apt update -y \
 
 USER root
 
-ADD ./functions /functions
+ADD ./../functions /functions
 
 RUN /bin/bash -c 'chmod +x /functions/*.sh'
 
@@ -21,8 +21,8 @@ USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
-COPY ./entrypoint.sh /entrypoint.sh
-COPY ./t.sh /minecraft.sh
+COPY ./../entrypoint.sh /entrypoint.sh
+COPY ./../t.sh /minecraft.sh
 
 RUN chmod -f a+x /minecraft.sh || true
 

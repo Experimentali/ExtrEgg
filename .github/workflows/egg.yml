@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./multi/${{ matrix.game }}
+          context: ./multi/
           file: ./multi/${{ matrix.game }}/Dockerfile
           platforms: linux/amd64
           push: true
