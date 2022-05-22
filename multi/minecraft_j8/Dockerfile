@@ -15,6 +15,8 @@ USER root
 
 ADD ./../functions /functions
 
+COPY ./../t.sh /minecraft.sh
+
 RUN /bin/bash -c 'chmod +x /functions/*.sh'
 RUN /bin/bash -c 'chmod +x /minecraft.sh'
 
@@ -23,7 +25,6 @@ ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
 COPY ./../entrypoint.sh /entrypoint.sh
-COPY ./../t.sh /minecraft.sh
 
 
 CMD ["/bin/bash", "/entrypoint.sh"]
