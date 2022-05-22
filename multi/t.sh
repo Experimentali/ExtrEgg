@@ -59,19 +59,6 @@ fi
 
 /functions/update_jar.sh
 
-# update java versions
-
-case $version in
-  "1.8.8"|"1.9.4"|"1.10.2"|"1.11.2")
-    update-alternatives --set java /usr/local/openjdk-8/bin/java;;
-  "1.12.2"|"1.14.4"|"1.15.2"|"1.16.5")
-    update-alternatives --set java /usr/local/openjdk-11/bin/java;;
-  "1.17.1"|"1.18.2")
-    update-alternatives --set java /usr/local/openjdk-17/bin/java;;
-  *)
-    update-alternatives --set java /usr/local/openjdk-8/bin/java;;
-esac
-
 # start server
 
 exec java -Xmx1G -Xms512M -jar /home/container/server.jar 
