@@ -5,6 +5,7 @@ group () {
   echo "1: Minecraft Java"
   echo "2: Minecraft Bedrock"
   echo "3: Minecraft Proxy"
+  echo "4: Custom Jar"
   read group
   software
 }
@@ -29,6 +30,11 @@ software () {
     echo "7: Velocity (Java)"
     read group
     version
+  elif [[ "$group" == "4" ]]
+  then
+    echo "$(tput setaf 1)$(tput bold)WARNING$(tput sgr 0) $(tput setaf 1)You are not allowed to use any malicious jars. To use a custom jar, upload your jar and name it 'custom.jar'."
+    touch /home/container/system/configuration/version.txt
+    echo "C|0" > /home/container/system/configuration/version.txt
   else
     echo "$(tput setaf 1)$(tput bold)FAILURE$(tput sgr 0) $(tput setaf 1)Your version could not be found. Try agin?$(tput sgr 0)"
   fi
