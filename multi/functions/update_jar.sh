@@ -36,7 +36,14 @@ then
 elif [[ "$software" == "7" ]]
 then
   download_velocity
+elif [[ "$software" == "C" ]]
+then
+  if [[ ! -f "/home/container/server.jar" ]]
+  then
+    echo "FAILURE It appears you do not have a jar selected. Please confirm your jar is uploaded and named 'server.jar'."
+  fi
 else
   echo "FAILURE Your version could not be found. Please try again."
+  rm -rf /home/container/system/configuration/version.txt
   exit 1;
 fi
