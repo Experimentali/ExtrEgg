@@ -50,7 +50,7 @@ source /functions/version.sh
 
 # run version picker
 
-if [ ! -f /home/container/server.jar ]
+if [ ! -f /home/container/system/configuration/version.txt ]
 then
   group
 fi
