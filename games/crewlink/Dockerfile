@@ -11,7 +11,7 @@ USER container
 ENV  USER=container HOME=/home/container
 WORKDIR /home/container
 
-RUN npm install yarn -g
+RUN npm install yarn
 
 COPY ./entrypoint.sh /entrypoint.sh
 CMD  ["/bin/bash", "/entrypoint.sh"]
