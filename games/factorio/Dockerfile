@@ -1,33 +1,33 @@
-# Declare BASE image
-FROM alpine:3.14
+FROM         --platform=$TARGETOS/$TARGETARCH debian:bullseye-slim
 
-# Install required thingers
-RUN  apk update \
-  && apk upgrade \
-  && apk add ca-certificates \
-  && update-ca-certificates \
-  && apk add --update coreutils && rm -rf /var/cache/apk/*   \ 
-  && apk add --update xz openjdk8 openjdk11-jre-headless openjdk17-jre-headless tzdata curl unzip bash --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
-  && apk add --no-cache nss \
-  && rm -rf /var/cache/apk/*
-# Declare ME maintainer
-MAINTAINER Experimental, me@tringlle.ml
+LABEL        author="ExperimentalX" maintainer="me@tringlle.ml"
 
-# Update some things & add the container user
-RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig figlet ncurses \
-    && adduser --disabled-password --home /home/container container
+LABEL        org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
+LABEL        org.opencontainers.image.licenses=MIT
 
-# Switch to container user
-USER container
-# Set user home, and user ENV vars
-ENV  USER=container HOME=/home/container
+ENV          DEBIAN_FRONTEND noninteractive
 
-# Set work dir
-WORKDIR /home/container
+RUN          useradd -m -d /home/container -s /bin/bash container
 
-# Copy entrypoint to inside docker
-COPY ./entrypoint.sh /entrypoint.sh
+RUN          ln -s /home/container/ /nonexistent
+
+ENV          USER=container HOME=/home/container
+
+## Update base packages
+RUN          apt update \
+             && apt upgrade -y
+
+## Install dependencies
+RUN          apt install -y gcc g++ libgcc1 libc++-dev gdb libc6 git wget curl tar zip unzip binutils xz-utils liblzo2-2 cabextract iproute2 net-tools netcat telnet libatomic1 libsdl1.2debian libsdl2-2.0-0 \
+             libfontconfig libicu67 icu-devtools libunwind8 libssl-dev sqlite3 libsqlite3-dev libmariadbclient-dev-compat libduktape205 locales ffmpeg gnupg2 apt-transport-https software-properties-common ca-certificates \
+             liblua5.3-0 libz-dev rapidjson-dev tzdata libevent-dev libzip4 openjdk-11-jdk
+
+## Configure locale
+RUN          update-locale lang=en_US.UTF-8 \
+             && dpkg-reconfigure --frontend noninteractive locales
 
 
-# Execute entrypoint
-CMD ["/bin/bash", "/entrypoint.sh"]
+WORKDIR     /home/container
+
+COPY        ./entrypoint.sh /entrypoint.sh
+CMD         [ "/bin/bash", "/entrypoint.sh" ]
