@@ -1,4 +1,4 @@
-name: build crewlink
+name: build dontstarve
 on:
   workflow_dispatch:
   schedule:
@@ -7,16 +7,16 @@ on:
     branches:
       - master
     paths:
-      - games/crewlink/*
+      - games/dst/*
 jobs:
   push:
-    name: "games:crewlink"
+    name: "games:dst"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         game:
-          - crewlink
+          - dst
           
     steps:
       - uses: actions/checkout@v2
@@ -31,9 +31,9 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./games/crewlink/
-          file: ./games/crewlink/Dockerfile
+          context: ./games/dst/
+          file: ./games/dst/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
-             ghcr.io/experimentali/games:crewlink
+             ghcr.io/experimentali/games:dst
