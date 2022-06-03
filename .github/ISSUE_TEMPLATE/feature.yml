@@ -1,0 +1,25 @@
+name: Game Idea
+description: Submit a suggestion for a game
+title: "[GameIdea]: "
+labels: ["game"]
+assignees:
+  - Experimentali
+body:
+  - type: textarea
+    id: what-game
+    attributes:
+      label: What Game?
+      description: What game do you want?
+      placeholder: Which game is absolutely required?
+      value: "A game appeared!"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why?
+      description: Why should I?
+      placeholder: Why is this game absolutely required?
+      value: "A game appeared!"
+    validations:
+      required: true
