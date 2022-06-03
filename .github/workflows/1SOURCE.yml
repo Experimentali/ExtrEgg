@@ -1,4 +1,4 @@
-name: build bot
+name: build SOURCE
 on:
   workflow_dispatch:
   schedule:
@@ -7,16 +7,16 @@ on:
     branches:
       - master
     paths:
-      - games/bots/*
+      - steamCMD/*
 jobs:
   push:
-    name: "games:bot"
+    name: "games:source"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         game:
-          - bots
+          - source
           
     steps:
       - uses: actions/checkout@v2
@@ -31,9 +31,9 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./games/bots/
-          file: ./games/bots/Dockerfile
+          context: ./steamCMD/
+          file: ./steamCMD/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
-             ghcr.io/experimentali/games:bot
+             ghcr.io/experimentali/games:source
