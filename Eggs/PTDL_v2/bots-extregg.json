@@ -1,0 +1,92 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2022-06-03T19:13:06-06:00",
+    "name": "Bots ExtrEgg",
+    "author": "experimental@frozenhosting.net",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "Master": "ghcr.io\/experimentali\/games:bot"
+    },
+    "file_denylist": [],
+    "startup": "-Xmx{{SERVER_MEMORY}} -Xms512M -jar",
+    "config": {
+        "files": "{}",
+        "startup": "{}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "alpine:3.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "License KEY",
+            "description": "Your key to use this egg",
+            "env_variable": "LICENSE_KEY",
+            "default_value": "null",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Confirmation Key",
+            "description": "Your key to authenticate with the server",
+            "env_variable": "CONFIRM_KEY",
+            "default_value": "null",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Host ID",
+            "description": "Your HOST ID",
+            "env_variable": "HOST_ID",
+            "default_value": "null",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Node Version",
+            "description": "If you are using NodeJS, which version?",
+            "env_variable": "NPM_VERSION",
+            "default_value": "16",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:16,14,12",
+            "field_type": "text"
+        },
+        {
+            "name": "Main File",
+            "description": "This would be the Main File of your project.",
+            "env_variable": "MAIN_FILE",
+            "default_value": "index.js",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Java Version",
+            "description": "What java version would you like to use?",
+            "env_variable": "JAVA_VERSION",
+            "default_value": "17",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:17,11,8",
+            "field_type": "text"
+        }
+    ]
+}

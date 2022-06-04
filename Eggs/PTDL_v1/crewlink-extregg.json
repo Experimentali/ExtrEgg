@@ -1,0 +1,95 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1",
+        "update_url": null
+    },
+    "exported_at": "2022-06-02T14:25:37-06:00",
+    "name": "CrewLink ExtrEgg",
+    "author": "experimental@frozenhosting.net",
+    "description": null,
+    "features": null,
+    "images": [
+        "ghcr.io\/experimenali\/games:crewlink"
+    ],
+    "file_denylist": [],
+    "startup": "echo 'gg'",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"CrewLink Server started\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "alpine:3.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "License KEY",
+            "description": "Your key to use this egg",
+            "env_variable": "LICENSE_KEY",
+            "default_value": "null",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string"
+        },
+        {
+            "name": "Confirmation Key",
+            "description": "Your key to authenticate with the server",
+            "env_variable": "CONFIRM_KEY",
+            "default_value": "null",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string"
+        },
+        {
+            "name": "Host ID",
+            "description": "Your HOST ID",
+            "env_variable": "HOST_ID",
+            "default_value": "null",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string"
+        },
+        {
+            "name": "Domain",
+            "description": "Domain of your server or ip of your server",
+            "env_variable": "ADDRESS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:50"
+        },
+        {
+            "name": "Server Name",
+            "description": "Specify the name of your CrewLink Server",
+            "env_variable": "NAME",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:75"
+        },
+        {
+            "name": "Use HTTPS",
+            "description": "Enables https. You must place privkey.pem and fullchain.pem in your CWD.",
+            "env_variable": "HTTPS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:20"
+        },
+        {
+            "name": "Port",
+            "description": "Choose the port your server should run on",
+            "env_variable": "PORT",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20"
+        }
+    ]
+}

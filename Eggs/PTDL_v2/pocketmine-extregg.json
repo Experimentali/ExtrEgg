@@ -1,0 +1,62 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2022-06-03T19:11:59-06:00",
+    "name": "PocketMine ExtrEgg",
+    "author": "experimental@frozenhosting.net",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "Master": "ghcr.io\/experimentali\/games:pocketmine"
+    },
+    "file_denylist": [],
+    "startup": "echo 'gg'",
+    "config": {
+        "files": "{}",
+        "startup": "{}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "alpine:3.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "License KEY",
+            "description": "Your key to use this egg",
+            "env_variable": "LICENSE_KEY",
+            "default_value": "null",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Confirmation Key",
+            "description": "Your key to authenticate with the server",
+            "env_variable": "CONFIRM_KEY",
+            "default_value": "null",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Host ID",
+            "description": "Your HOST ID",
+            "env_variable": "HOST_ID",
+            "default_value": "null",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        }
+    ]
+}

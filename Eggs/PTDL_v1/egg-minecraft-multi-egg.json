@@ -1,0 +1,72 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2022-06-03T02:58:50+02:00",
+    "name": "Minecraft MultiEgg",
+    "author": "me@tringlle.ml",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/experimentali\/games:minecraft": "ghcr.io\/experimentali\/games:minecraft"
+    },
+    "file_denylist": [],
+    "startup": "-Xmx{{SERVER_MEMORY}}M -Xms512M -jar server.jar",
+    "config": {
+        "files": "{}",
+        "startup": "{}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "alpine:3.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "License KEY",
+            "description": "Your key to use this egg",
+            "env_variable": "LICENSE_KEY",
+            "default_value": "null",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Confirmation Key",
+            "description": "Your key to authenticate with the server",
+            "env_variable": "CONFIRM_KEY",
+            "default_value": "null",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Host ID",
+            "description": "Your HOST ID",
+            "env_variable": "HOST_ID",
+            "default_value": "null",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Version",
+            "description": "What minecraft version would you like to run?",
+            "env_variable": "VERSION",
+            "default_value": "default",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:1.8.8,1.9.4,1.10.2,1.11.2,1.12.2,1.13.2,1.14.4,1.15.2,1.16.5,1.17.1,1.18.2,default",
+            "field_type": "text"
+        }
+    ]
+}
