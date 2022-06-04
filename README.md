@@ -15,5 +15,9 @@ Next, find the highlighted text (in the image)
 ![image](https://user-images.githubusercontent.com/68918014/171527380-0122d289-be23-4a7b-8bf4-efd3fb894710.png)
 
 Replace the `null` with your Confirmation Key, and save.
+Next, find the highlighted text (in the image)
+![image](https://user-images.githubusercontent.com/68918014/172019993-ca8eabd6-ce35-49fc-9130-ebc1c0e7d7e5.png)
+
+Replace the `null` with your Host ID, and save.
 
 Now you can create your servers and they should work fine! Happy Gaming!
