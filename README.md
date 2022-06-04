@@ -4,7 +4,6 @@ A lot of beyond heck optimized eggs.
 
 ## How to Use
 Well, to use it you need a license key. Request one in the [discord](https://discord.gg/5RVUh5tedE).
-You can also get the eggs themselves there.
 
 
 Once you have retrieved the egg and the license key, import it to your Pterodactyl Panel.
