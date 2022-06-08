@@ -15,7 +15,7 @@
     "file_denylist": [],
     "startup": "-Xmx{{SERVER_MEMORY}}M -Xms512M -jar server.jar",
     "config": {
-        "files": "{}",
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"enable-query\": \"true\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{}",
         "logs": "{}",
         "stop": "stop"
