@@ -41,16 +41,6 @@
             "field_type": "text"
         },
         {
-            "name": "Confirmation Key",
-            "description": "Your key to authenticate with the server",
-            "env_variable": "CONFIRM_KEY",
-            "default_value": "null",
-            "user_viewable": false,
-            "user_editable": false,
-            "rules": "required|string",
-            "field_type": "text"
-        },
-        {
             "name": "Host ID",
             "description": "Your HOST ID",
             "env_variable": "HOST_ID",
