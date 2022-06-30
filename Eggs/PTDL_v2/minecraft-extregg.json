@@ -67,6 +67,6 @@
             "user_editable": true,
             "rules": "required|string|in:java,proxy",
             "field_type": "text"
-        },
+        }
     ]
 }

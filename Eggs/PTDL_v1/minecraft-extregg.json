@@ -63,6 +63,6 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|in:java,proxy",
-        },
+        }
     ]
 }
