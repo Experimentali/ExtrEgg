@@ -7,7 +7,7 @@
     "exported_at": "2022-06-03T19:13:42-06:00",
     "name": "CrewLink ExtrEgg",
     "author": "experimental@frozenhosting.net",
-    "description": null,
+    "description": "Crewlink ExtrEgg",
     "features": null,
     "docker_images": {
         "Master": "ghcr.io\/experimenali\/games:crewlink"

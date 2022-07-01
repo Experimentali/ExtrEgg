@@ -7,7 +7,7 @@
     "exported_at": "2022-06-03T19:28:59-06:00",
     "name": "Terraria ExtrEgg",
     "author": "experimental@frozenhosting.net",
-    "description": "Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game.",
+    "description": "Terraria ExtrEgg",
     "features": null,
     "docker_images": {
         "Master": "ghcr.io\/experimentali\/games:terraria"

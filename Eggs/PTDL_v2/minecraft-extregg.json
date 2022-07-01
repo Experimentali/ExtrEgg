@@ -7,7 +7,7 @@
     "exported_at": "2022-06-03T19:28:07-06:00",
     "name": "Minecraft MultiEgg",
     "author": "me@tringlle.ml",
-    "description": null,
+    "description": "Minecraft ExtrEgg",
     "features": null,
     "docker_images": {
         "Master": "ghcr.io\/experimentali\/games:minecraft"

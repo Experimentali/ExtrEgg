@@ -7,7 +7,7 @@
 	"exported_at": "2022-06-01T09:50:14-06:00",
 	"name": "Minecraft MultiEgg",
 	"author": "me@tringlle.ml",
-	"description": null,
+	"description": "Minecraft ExtrEgg",
 	"features": null,
 	"images": [
 		"ghcr.io\/experimentali\/games:minecraft"

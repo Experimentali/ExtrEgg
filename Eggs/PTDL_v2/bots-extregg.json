@@ -7,7 +7,7 @@
     "exported_at": "2022-06-03T19:13:06-06:00",
     "name": "Bots ExtrEgg",
     "author": "experimental@frozenhosting.net",
-    "description": null,
+    "description": "Bots ExtrEgg",
     "features": null,
     "docker_images": {
         "Master": "ghcr.io\/experimentali\/games:bot"
