@@ -8,7 +8,7 @@
     "name": "Minecraft MultiEgg",
     "author": "me@tringlle.ml",
     "description": "Minecraft ExtrEgg",
-    "features": null,
+    "features": ["eula", "pid_limit"],
     "docker_images": {
         "Master": "ghcr.io\/experimentali\/games:minecraft"
     },
