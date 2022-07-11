@@ -4,19 +4,22 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2022-06-03T19:28:07-06:00",
+    "exported_at": "2022-07-11T14:25:11-06:00",
     "name": "Minecraft MultiEgg",
     "author": "me@tringlle.ml",
     "description": "Minecraft ExtrEgg",
-    "features": ["eula", "pid_limit"],
+    "features": [
+        "eula",
+        "pid_limit"
+    ],
     "docker_images": {
         "Master": "ghcr.io\/experimentali\/games:minecraft"
     },
     "file_denylist": [],
-    "startup": "-Xmx{{SERVER_MEMORY}}M -Xms512M -jar server.jar",
+    "startup": "-Xms512M -Xmx{{SERVER_MEMORY}}M",
     "config": {
         "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"enable-query\": \"true\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
-        "startup": "{}",
+        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
         "logs": "{}",
         "stop": "stop"
     },
@@ -49,23 +52,23 @@
             "field_type": "text"
         },
         {
-            "name": "Version",
-            "description": "What minecraft version would you like to run?",
-            "env_variable": "VERSION",
-            "default_value": "default",
+            "name": "debug",
+            "description": "Should debug logging be enabled? Only enable if a developer asks for this.",
+            "env_variable": "DEBUG",
+            "default_value": "0",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|in:1.8.8,1.9.4,1.10.2,1.11.2,1.12.2,1.13.2,1.14.4,1.15.2,1.16.5,1.17.1,1.18.2,default",
+            "rules": "boolean",
             "field_type": "text"
         },
         {
-            "name": "Software",
-            "description": "What software do you want to run?",
-            "env_variable": "SOFTWARE",
-            "default_value": "java",
+            "name": "Akiar Flags",
+            "description": "Should we enable Akiar Flags?",
+            "env_variable": "AIKAR_FlAGS",
+            "default_value": "1",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|in:java,proxy",
+            "rules": "boolean",
             "field_type": "text"
         }
     ]

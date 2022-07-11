@@ -21,7 +21,9 @@ RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite
 # Switch to container user
 USER container
 # Set user home, and user ENV vars
-ENV  USER=container HOME=/home/container
+ENV  USER=container 
+ENV  HOME=/home/container
+ENV  LD_BIND_NOW=1
 
 # Set work dir
 WORKDIR /home/container
