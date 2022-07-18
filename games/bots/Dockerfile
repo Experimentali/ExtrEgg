@@ -24,8 +24,8 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | ba
 
 RUN export NVM_DIR="$HOME/.nvm"
 RUN chmod +x /root/.nvm -R
-RUN $NVM_DIR/nvm.sh
-RUN \. "$NVM_DIR/bash_completion"
+RUN /root/.nvm/nvm.sh
+RUN \. "/root/.nvm/bash_completion"
 
 # Install node versions
 RUN nvm install 12
