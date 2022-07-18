@@ -19,18 +19,27 @@ RUN echo '' > ~/.bashrc
 RUN apk add --update python3 py3-pip
 
 
-# NodeJS Manager
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+# NodeJS Versions
+RUN curl -fLO https://github.com/oznu/alpine-node/releases/download/12.19.0/node-v12.19.0-linux-x86_64-alpine.tar.gz
+RUN curl -fLO https://github.com/oznu/alpine-node/releases/download/14.18.1/node-v14.18.1-linux-x86_64-alpine.tar.gz
+RUN curl -fLO https://github.com/oznu/alpine-node/releases/download/16.15.1/node-v16.15.1-linux-x86_64-alpine.tar.gz
 
-RUN export NVM_DIR="$HOME/.nvm"
-RUN chmod +x /root/.nvm -R
-RUN /root/.nvm/nvm.sh
-RUN \. "/root/.nvm/bash_completion"
+RUN tar -xzf node-v12.19.0-linux-x86_64-alpine.tar.gz -C /usr --strip-components=1 --no-same-owner
+RUN mv /usr/local/bin/npm /usr/local/bin/npm12
+RUN mv /usr/local/bin/node /usr/local/bin/node12
+RUN mv /usr/local/bin/npx /usr/local/bin/npx12
 
-# Install node versions
-RUN nvm install 12
-RUN nvm install 14
-RUN nvm install 16
+RUN tar -xzf node-v14.18.1-linux-x86_64-alpine.tar.gz -C /usr --strip-components=1 --no-same-owner
+RUN mv /usr/local/bin/npm /usr/local/bin/npm14
+RUN mv /usr/local/bin/node /usr/local/bin/node14
+RUN mv /usr/local/bin/npx /usr/local/bin/npx14
+
+RUN tar -xzf node-v16.15.1-linux-x86_64-alpine.tar.gz -C /usr --strip-components=1 --no-same-owner
+RUN mv /usr/local/bin/npm /usr/local/bin/npm16
+RUN mv /usr/local/bin/node /usr/local/bin/node16
+RUN mv /usr/local/bin/npx /usr/local/bin/npx16
+RUN mv /usr/local/bin/corepack /usr/local/bin/corepack16
+
 
 #######################################
 
