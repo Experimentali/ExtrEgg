@@ -22,6 +22,11 @@ RUN apk add --update python3 py3-pip
 # NodeJS Manager
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
+RUN export NVM_DIR="$HOME/.nvm"
+RUN chmod +x /root/.nvm -R
+RUN $NVM_DIR/nvm.sh
+RUN \. "$NVM_DIR/bash_completion"
+
 # Install node versions
 RUN nvm install 12
 RUN nvm install 14
