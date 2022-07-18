@@ -8,20 +8,27 @@ RUN  apk update \
   && apk add ca-certificates \
   && update-ca-certificates \
   && apk add --update coreutils && rm -rf /var/cache/apk/*   \ 
-  && apk add --update openjdk8 openjdk11-jre-headless openjdk17-jre-headless nodejs npm tzdata curl unzip bash git --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
+  && apk add --update openjdk8 openjdk11-jre-headless openjdk17-jre-headless tzdata curl unzip bash git --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
   && apk add --no-cache nss \
   && rm -rf /var/cache/apk/*
 
 RUN echo '' > ~/.bashrc
 
-# NodeJS Switcher
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-RUN bash -c "source ${HOME}/.bashrc" 
-
 # Install Python
 
 RUN apk add --update python3 py3-pip
 
+
+# NodeJS Manager
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh|bash
+RUN export NVM_DIR="$HOME/.nvm"
+RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+RUN [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Install node versions
+RUN nvm install 12
+RUN nvm install 14
+RUN nvm install 16
 
 #######################################
 
